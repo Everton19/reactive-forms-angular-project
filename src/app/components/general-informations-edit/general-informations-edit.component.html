@@ -1,0 +1,59 @@
+<form [formGroup]="userForm" class="p-4 grid gap-4">
+  <ng-container formGroupName="generalInformations">
+    <div class="grid lg:grid-cols-3 gap-4">
+      <mat-form-field class="w-full">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder="Fulano" formControlName="name" />
+        <mat-error>O Nome é obrigatório.</mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-full">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="fulano@hotmail.com" formControlName="email" />
+        <mat-error *ngIf="emailControl.hasError('required')">O Email é obrigatório.</mat-error>
+        <mat-error *ngIf="emailControl.hasError('pattern')">O Email é inválido.</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="grid lg:grid-cols-3 gap-4">
+      <mat-form-field class="w-full">
+        <mat-label>País</mat-label>
+        <input matInput placeholder="Brazil" [matAutocomplete]="autoCountry" formControlName="country" />
+        <mat-autocomplete #autoCountry="matAutocomplete" (optionSelected)="onCountrySelected($event)">
+          <mat-option [value]="country.name" *ngFor="let country of countriesListFiltered">
+            {{ country.name }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <mat-form-field class="w-full">
+        <mat-label>Estado</mat-label>
+        <input matInput placeholder="São Paulo" [matAutocomplete]="autoState" formControlName="state" />
+        <mat-autocomplete #autoState="matAutocomplete">
+          <mat-option [value]="state.name" *ngFor="let state of statesListFiltered">
+            {{ state.name }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div class="grid lg:grid-cols-3 gap-4">
+      <div class="w-full">
+        <div class="text-lg">Estado Civil:</div>
+        <mat-radio-group class="w-full flex flex-col sm:flex-row sm:justify-between" formControlName="maritalStatus">
+          <mat-radio-button *ngFor="let maritalStatus of maritalStatusArray"
+                                [value]="[maritalStatus.code]">
+                                {{maritalStatus.description}}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <mat-form-field class="w-full">
+        <mat-label>Renda Mensal:</mat-label>
+        <input matInput placeholder="R$5000,00" formControlName="monthlyIncome" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Data de Nascimento:</mat-label>
+        <input matInput [matDatepicker]="picker" placeholder="Escolha uma data" formControlName="birthDate" />
+        <mat-hint>DD/MM/AAAA</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </ng-container>
+</form>

@@ -13,9 +13,9 @@ import { IUser } from './interfaces/user/user.interface';
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
+  isEditMode: boolean = false;
   title = 'projeto-reactive-forms';
   usersList: UsersListResponse = [];
-  currentTabIndex: number = 0;
   userSelectedIndex: number | undefined;
   userSelected: IUser = {} as IUser;
 
@@ -55,9 +55,16 @@ export class AppComponent implements OnInit {
     const USER_FOUND = this.usersList[$event];
 
     if (USER_FOUND) {
-      this.currentTabIndex = 0;
       this.userSelectedIndex = $event;
       this.userSelected = structuredClone(USER_FOUND);
     }
+  }
+
+  onCancelButton() {
+    this.isEditMode = false;
+  }
+
+  onEditButton() {
+    this.isEditMode = true;
   }
 }
