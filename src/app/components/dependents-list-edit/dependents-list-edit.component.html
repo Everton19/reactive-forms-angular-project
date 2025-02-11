@@ -1,0 +1,30 @@
+<div class="p-4">
+  <p class="text-xl font-semibold">Dependentes:</p>
+
+  <div>
+    <button class="rounded-md px-3 py-2 text-lg font-medium leading-5 text-white bg-green-600 hover:bg-green-500">Novo
+      Dependente</button>
+  </div>
+
+  <div class="my-4 grid grid-cols-2 sm:grid-cols-4 gap-4">
+    <mat-form-field class="w-full">
+      <mat-label>Nome:</mat-label>
+      <input matInput type="text" placeholder="Fulano" value="Fulano" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label class="w-full">Idade:</mat-label>
+      <input matInput type="text" placeholder="22" value="22" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label class="w-full">Documento:</mat-label>
+      <input matInput type="text" placeholder="123.123.123-12" value="123.123.123-12" />
+    </mat-form-field>
+    <div class="flex justify-center items-baseline box-border p-2">
+      <button class="rounded-md px-3 py-2 text-lg font-medium leading-5 text-white bg-red-600 hover:bg-red-500">
+        Deletar
+      </button>
+    </div>
+  </div>
+
+  <hr class="block sm:hidden">
+</div>
