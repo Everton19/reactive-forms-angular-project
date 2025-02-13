@@ -44,8 +44,9 @@
         </mat-radio-group>
       </div>
       <mat-form-field class="w-full">
-        <mat-label>Renda Mensal:</mat-label>
-        <input matInput placeholder="R$5000,00" formControlName="monthlyIncome" />
+        <mat-label class="pr-0">Renda Mensal:</mat-label>
+        <input #monthlyIncome matInput placeholder="R$5000,00" formControlName="monthlyIncome" mask="separator.2" thousandSeparator="." decimalSeparator=","/>
+        <span matTextPrefix *ngIf="monthlyIncome.value">R$</span>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Data de Nascimento:</mat-label>
