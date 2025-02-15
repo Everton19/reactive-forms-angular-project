@@ -44,16 +44,18 @@
         </mat-radio-group>
       </div>
       <mat-form-field class="w-full">
-        <mat-label class="pr-0">Renda Mensal:</mat-label>
+        <mat-label>Renda Mensal:</mat-label>
         <input #monthlyIncome matInput placeholder="R$5000,00" formControlName="monthlyIncome" mask="separator.2" thousandSeparator="." decimalSeparator=","/>
         <span matTextPrefix *ngIf="monthlyIncome.value">R$</span>
+        <mat-error>A Renda Mensal é obrigatória</mat-error>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Data de Nascimento:</mat-label>
-        <input matInput [matDatepicker]="picker" placeholder="Escolha uma data" formControlName="birthDate" />
+        <input matInput [matDatepicker]="picker" placeholder="Escolha uma data" formControlName="birthDate" readonly />
         <mat-hint>DD/MM/AAAA</mat-hint>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
+        <mat-error>A Data de Nascimento é obrigatória</mat-error>
       </mat-form-field>
     </div>
   </ng-container>
