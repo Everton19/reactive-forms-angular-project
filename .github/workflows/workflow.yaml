@@ -4,17 +4,23 @@ on:
     branches:
       - main
 jobs:
-  continuos-integration:
+  continuous-integration:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - name: Setup Node.js
+      - name: 🛎️ Checkout do código
+        uses: actions/checkout@v3
+
+      - name: 🔧 Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '22.x'
-      - name: Install dependencies
-        run: |
-          npm install
-          npm run build
-          npm run test
+          node-version: '20.x'
 
+      - name: 📦 Instalar dependências
+        run: npm install
+
+      - name: 🏗️ Build do projeto
+        run: npm run build
+
+      - name: ✅ Executar testes
+        run: npm run test -- --watch=false --no-progress --browsers=ChromeHeadless
