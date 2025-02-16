@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PhoneListEditComponent } from './phone-list-edit.component';
+import { AngularMaterialModule } from '../../../../angular-material/angular-material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('PhoneListEditComponent', () => {
   let component: PhoneListEditComponent;
@@ -8,10 +10,16 @@ describe('PhoneListEditComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PhoneListEditComponent]
+      imports: [
+        AngularMaterialModule,
+        BrowserAnimationsModule
+      ],
+      declarations: [
+        PhoneListEditComponent
+      ]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(PhoneListEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

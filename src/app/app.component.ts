@@ -29,20 +29,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this._countriesService.getCountries().subscribe((countriesResponse) => {
-    //   // console.log(countriesResponse);
-    // });
-
-    // this._statesService.getStates('Canada').subscribe((statesResponse) => {
-    //   // console.log(statesResponse);
-    // });
-
-    // this._citiesService
-    //   .getCities('Brazil', 'Rio Grande do Sul')
-    //   .subscribe((citiesResponse) => {
-    //     // console.log(citiesResponse);
-    //   });
-
     this._usersService
       .getUsers()
       .pipe(take(1))
