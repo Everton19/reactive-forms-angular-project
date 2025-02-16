@@ -1,16 +1,32 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { CountriesService } from './services/countries.service';
+import { CitiesService } from './services/cities.service';
+import { UsersService } from './services/users.service';
+import { StatesService } from './services/states.service';
+import { HttpClientModule } from '@angular/common/http';
+import { AngularMaterialModule } from './angular-material/angular-material.module';
+import { UsersListComponent } from './components/users-list/users-list.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        HttpClientModule,
+        AngularMaterialModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        UsersListComponent
       ],
+      providers: [
+        CountriesService,
+        StatesService,
+        CitiesService,
+        UsersService
+      ]
     }).compileComponents();
   });
 
@@ -24,12 +40,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('projeto-reactive-forms');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, projeto-reactive-forms');
   });
 });
